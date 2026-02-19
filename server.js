@@ -1,36 +1,22 @@
 const express = require('express');
-const fs = require('fs');
-const path = require('path');
 const crypto = require('crypto');
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const DATA_FILE = path.join(__dirname, 'events.json');
+
+// In-memory store (works reliably on cloud free tiers)
+const events = {};
 
 // Middleware
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// --- File helpers ---
-
-function readEvents() {
-  try {
-    const raw = fs.readFileSync(DATA_FILE, 'utf8');
-    return JSON.parse(raw);
-  } catch (err) {
-    return {};
-  }
-}
-
-function writeEvents(data) {
-  fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2), 'utf8');
-}
-
-function makeId(existing) {
+function makeId() {
   let id;
   do {
     id = crypto.randomBytes(3).toString('hex');
-  } while (existing[id]);
+  } while (events[id]);
   return id;
 }
 
@@ -57,8 +43,7 @@ app.post('/api/events', (req, res) => {
     return res.status(400).json({ error: 'All time options must have a value.' });
   }
 
-  const events = readEvents();
-  const id = makeId(events);
+  const id = makeId();
 
   events[id] = {
     id,
@@ -67,8 +52,6 @@ app.post('/api/events', (req, res) => {
     options: cleanOptions.map((label, i) => ({ id: `opt_${i}`, label })),
     votes: [],
   };
-
-  writeEvents(events);
 
   res.status(201).json({
     id,
@@ -79,7 +62,6 @@ app.post('/api/events', (req, res) => {
 
 // GET /api/events/:id — fetch a single event
 app.get('/api/events/:id', (req, res) => {
-  const events = readEvents();
   const event = events[req.params.id];
   if (!event) {
     return res.status(404).json({ error: 'Event not found.' });
@@ -89,7 +71,6 @@ app.get('/api/events/:id', (req, res) => {
 
 // POST /api/events/:id/votes — submit or update a vote
 app.post('/api/events/:id/votes', (req, res) => {
-  const events = readEvents();
   const event = events[req.params.id];
   if (!event) {
     return res.status(404).json({ error: 'Event not found.' });
@@ -132,7 +113,6 @@ app.post('/api/events/:id/votes', (req, res) => {
     event.votes.push(newVote);
   }
 
-  writeEvents(events);
   res.json({ ok: true });
 });
 

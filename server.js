@@ -137,7 +137,6 @@ app.post('/api/events/:id/votes', (req, res) => {
 });
 
 // Start server
-app.listen(PORT, () => {
-  console.log(`Event Tool is running!`);
-  console.log(`Open this in your browser: http://localhost:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Event Tool is running on port ${PORT}`);
 });

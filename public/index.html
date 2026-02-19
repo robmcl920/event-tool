@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Event — Event Tool</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="container">
+
+  <!-- Hero header -->
+  <div class="site-header">
+    <span class="logo" role="img" aria-label="Calendar">📅</span>
+    <h1>Plan an Event</h1>
+    <p class="subtitle">Click dates on the calendar to select them, then share with friends.</p>
+  </div>
+
+  <!-- Global error message -->
+  <div id="error-msg" class="error-msg hidden"></div>
+
+  <!-- Create Event Form -->
+  <form id="create-form">
+
+    <!-- Event title -->
+    <div class="card">
+      <h2>Event Details</h2>
+      <div class="field">
+        <label for="event-title">Event title</label>
+        <input type="text" id="event-title" placeholder="e.g. Team Lunch, Birthday Party…" required />
+      </div>
+    </div>
+
+    <!-- Calendar card -->
+    <div class="card">
+      <h2>Date Options</h2>
+
+      <!-- Calendar widget -->
+      <div class="cal-wrap">
+        <div class="cal-nav">
+          <button type="button" class="cal-nav-btn" id="cal-prev" aria-label="Previous month">&#9664;</button>
+          <span class="cal-month-label" id="cal-month-label"></span>
+          <button type="button" class="cal-nav-btn" id="cal-next" aria-label="Next month">&#9654;</button>
+        </div>
+        <div class="cal-weekdays">
+          <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+        </div>
+        <div class="cal-grid" id="cal-grid"></div>
+        <div id="cal-error" class="error-msg hidden" style="margin-top:0.75rem;margin-bottom:0"></div>
+      </div>
+
+      <!-- Time mode toggle -->
+      <div class="time-toggle" id="time-toggle" style="display:none">
+        <div class="chip-mode">
+          <button type="button" id="mode-allday" class="active">All day</button>
+          <button type="button" id="mode-time">Specific time</button>
+        </div>
+        <span class="chip-time" id="time-picker-wrap" style="display:none">
+          <label>at</label>
+          <input type="time" id="event-time" value="09:00" />
+        </span>
+      </div>
+
+      <!-- Option count indicator -->
+      <div class="option-counter" id="option-counter">0 of 30 dates selected</div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" id="submit-btn">Create Event →</button>
+
+  </form>
+
+  <!-- Success panel (hidden until event created) -->
+  <div id="success-panel" class="success-panel hidden">
+    <h2>🎉 Event created!</h2>
+    <p>Share the voting link with your friends. Keep the results link for yourself.</p>
+
+    <div class="link-row">
+      <label>Share this link with friends (for voting):</label>
+      <div class="link-copy">
+        <input type="text" id="vote-url" readonly />
+        <button class="btn-copy" data-target="vote-url">Copy</button>
+      </div>
+    </div>
+
+    <div class="link-row">
+      <label>Your results link (to see who voted):</label>
+      <div class="link-copy">
+        <input type="text" id="results-url" readonly />
+        <button class="btn-copy" data-target="results-url">Copy</button>
+      </div>
+    </div>
+
+    <button type="button" id="create-another-btn" class="btn btn-secondary" style="margin-top:0.75rem">
+      + Create another event
+    </button>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+<script>
+  // ─── Constants ────────────────────────────────────────────────────────────
+  const MIN_OPTIONS = 2;
+  const MAX_OPTIONS = 30;
+
+  // ─── DOM refs ─────────────────────────────────────────────────────────────
+  const form         = document.getElementById('create-form');
+  const submitBtn    = document.getElementById('submit-btn');
+  const successPanel = document.getElementById('success-panel');
+  const calGrid      = document.getElementById('cal-grid');
+  const calError     = document.getElementById('cal-error');
+  const counterEl    = document.getElementById('option-counter');
+  const timeToggle   = document.getElementById('time-toggle');
+  const modeAllday   = document.getElementById('mode-allday');
+  const modeTime     = document.getElementById('mode-time');
+  const timePicker   = document.getElementById('time-picker-wrap');
+  const eventTime    = document.getElementById('event-time');
+
+  // ─── Today (midnight, local) ───────────────────────────────────────────────
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  // ─── State: just a Set of selected date keys + view position ──────────────
+  const selectedDates = new Set(); // "YYYY-MM-DD" strings
+  let viewYear  = today.getFullYear();
+  let viewMonth = today.getMonth();
+  let timeMode  = 'allday'; // 'allday' | 'time'
+
+  // ─── Utilities ────────────────────────────────────────────────────────────
+
+  function toDateKey(d) {
+    return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+  }
+
+  function parseLocalDate(key) {
+    const [y, m, d] = key.split('-').map(Number);
+    return new Date(y, m - 1, d);
+  }
+
+  function showCalError(msg) {
+    calError.textContent = msg;
+    calError.classList.remove('hidden');
+  }
+
+  function hideCalError() {
+    calError.classList.add('hidden');
+  }
+
+  // Collect all selected dates into sorted option label strings
+  function collectOptionLabels() {
+    const sorted = [...selectedDates].sort();
+    return sorted.map(key => {
+      const d = parseLocalDate(key);
+      if (timeMode === 'allday') {
+        return formatDate(d);
+      } else {
+        return formatDateWithTime(d, eventTime.value || '09:00');
+      }
+    });
+  }
+
+  // ─── Calendar rendering ───────────────────────────────────────────────────
+
+  function renderCalendar() {
+    const label = document.getElementById('cal-month-label');
+    const firstOfMonth = new Date(viewYear, viewMonth, 1);
+    const daysInMonth  = new Date(viewYear, viewMonth + 1, 0).getDate();
+    const startWeekday = firstOfMonth.getDay();
+
+    label.textContent = firstOfMonth.toLocaleString('en-US', { month: 'long', year: 'numeric' });
+
+    // Disable Prev if at current month
+    document.getElementById('cal-prev').disabled =
+      viewYear === today.getFullYear() && viewMonth === today.getMonth();
+
+    // Build cell data
+    const cells = [];
+
+    // Previous month padding
+    const prevMonthDays = new Date(viewYear, viewMonth, 0).getDate();
+    for (let i = startWeekday - 1; i >= 0; i--) {
+      cells.push({ day: prevMonthDays - i, otherMonth: true, date: null });
+    }
+
+    // Current month days
+    for (let d = 1; d <= daysInMonth; d++) {
+      cells.push({ day: d, otherMonth: false, date: new Date(viewYear, viewMonth, d) });
+    }
+
+    // Trailing padding
+    let trailing = 1;
+    while (cells.length % 7 !== 0) {
+      cells.push({ day: trailing++, otherMonth: true, date: null });
+    }
+
+    // Render
+    calGrid.innerHTML = '';
+    cells.forEach(({ day, otherMonth, date }) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.textContent = day;
+
+      if (otherMonth || !date) {
+        btn.className = 'cal-day other-month';
+        btn.disabled = true;
+        calGrid.appendChild(btn);
+        return;
+      }
+
+      const isPast = date < today;
+      btn.className = 'cal-day';
+
+      if (isPast) {
+        btn.classList.add('past');
+        btn.disabled = true;
+        calGrid.appendChild(btn);
+        return;
+      }
+
+      if (date.getTime() === today.getTime()) btn.classList.add('today');
+
+      const key = toDateKey(date);
+      if (selectedDates.has(key)) {
+        btn.classList.add('selected');
+      }
+
+      btn.addEventListener('click', () => toggleDate(key));
+      calGrid.appendChild(btn);
+    });
+
+    updateCounter();
+    // Show/hide the time toggle when dates are selected
+    timeToggle.style.display = selectedDates.size > 0 ? '' : 'none';
+  }
+
+  // ─── Toggle a date on/off ─────────────────────────────────────────────────
+
+  function toggleDate(key) {
+    if (selectedDates.has(key)) {
+      selectedDates.delete(key);
+      hideCalError();
+    } else {
+      if (selectedDates.size >= MAX_OPTIONS) {
+        showCalError(`You can select up to ${MAX_OPTIONS} dates. Deselect one to add another.`);
+        return;
+      }
+      selectedDates.add(key);
+      hideCalError();
+    }
+    renderCalendar();
+  }
+
+  // ─── Counter ──────────────────────────────────────────────────────────────
+
+  function updateCounter() {
+    const count = selectedDates.size;
+    counterEl.textContent = `${count} of ${MAX_OPTIONS} dates selected`;
+    counterEl.className = 'option-counter' + (count >= MAX_OPTIONS ? ' at-limit' : '');
+  }
+
+  // ─── Time mode toggle ────────────────────────────────────────────────────
+
+  modeAllday.addEventListener('click', () => {
+    timeMode = 'allday';
+    modeAllday.classList.add('active');
+    modeTime.classList.remove('active');
+    timePicker.style.display = 'none';
+  });
+
+  modeTime.addEventListener('click', () => {
+    timeMode = 'time';
+    modeTime.classList.add('active');
+    modeAllday.classList.remove('active');
+    timePicker.style.display = '';
+  });
+
+  // ─── Navigation ───────────────────────────────────────────────────────────
+
+  document.getElementById('cal-prev').addEventListener('click', () => {
+    if (viewMonth === 0) { viewMonth = 11; viewYear--; }
+    else { viewMonth--; }
+    renderCalendar();
+  });
+
+  document.getElementById('cal-next').addEventListener('click', () => {
+    if (viewMonth === 11) { viewMonth = 0; viewYear++; }
+    else { viewMonth++; }
+    renderCalendar();
+  });
+
+  // ─── Initial render ───────────────────────────────────────────────────────
+  renderCalendar();
+
+  // ─── Form submit ──────────────────────────────────────────────────────────
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    hideError();
+    hideCalError();
+
+    const title   = document.getElementById('event-title').value.trim();
+    const options = collectOptionLabels();
+
+    if (options.length < MIN_OPTIONS) {
+      showError(`Please select at least ${MIN_OPTIONS} dates on the calendar.`);
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Creating…';
+
+    try {
+      const result = await apiFetch('/api/events', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title, options }),
+      });
+
+      document.getElementById('vote-url').value    = location.origin + result.voteUrl;
+      document.getElementById('results-url').value = location.origin + result.resultsUrl;
+      form.classList.add('hidden');
+      successPanel.classList.remove('hidden');
+    } catch (err) {
+      showError(err.message);
+    } finally {
+      submitBtn.disabled   = false;
+      submitBtn.textContent = 'Create Event →';
+    }
+  });
+
+  // ─── Copy buttons ──────────────────────────────────────────────────────────
+  document.querySelectorAll('.btn-copy').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const input = document.getElementById(btn.dataset.target);
+      input.select();
+      navigator.clipboard.writeText(input.value).then(() => {
+        btn.textContent = '✓ Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'Copy';
+          btn.classList.remove('copied');
+        }, 2000);
+      });
+    });
+  });
+
+  // ─── Create another ────────────────────────────────────────────────────────
+  document.getElementById('create-another-btn').addEventListener('click', () => {
+    successPanel.classList.add('hidden');
+    form.classList.remove('hidden');
+    selectedDates.clear();
+    timeMode = 'allday';
+    modeAllday.classList.add('active');
+    modeTime.classList.remove('active');
+    timePicker.style.display = 'none';
+    form.reset();
+    hideError();
+    hideCalError();
+    renderCalendar();
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vote — Event Tool</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="container">
+
+  <!-- Loading state -->
+  <div id="loading" class="loading">Loading event…</div>
+
+  <!-- Error state (bad ID, network error, etc.) -->
+  <div id="error-msg" class="error-msg hidden"></div>
+
+  <!-- Main vote content (hidden until event loads) -->
+  <div id="vote-content" class="hidden">
+
+    <!-- Hero header (title injected by JS) -->
+    <div class="site-header">
+      <span class="logo" role="img" aria-label="Calendar">🗓️</span>
+      <h1 id="event-title"></h1>
+      <p class="subtitle">Select every date that works for you, then submit.</p>
+    </div>
+
+    <form id="vote-form">
+
+      <div class="card">
+        <h2>Your name</h2>
+        <div class="field">
+          <input type="text" id="voter-name" placeholder="Enter your name" maxlength="50" required />
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Which dates work for you?</h2>
+        <div id="options-list"></div>
+      </div>
+
+      <button type="submit" class="btn btn-primary" id="submit-btn">Submit my vote →</button>
+
+    </form>
+
+    <!-- Thank-you panel (hidden until vote submitted) -->
+    <div id="thanks-panel" class="success-panel hidden">
+      <h2>🎉 Thanks for voting!</h2>
+      <p>Your response has been recorded. You can change your vote any time by coming back to this page.</p>
+      <a id="results-link" href="#" class="btn btn-secondary" style="display:inline-block;margin-top:0.5rem">
+        See the results →
+      </a>
+      <br />
+      <button type="button" id="vote-again-btn" class="btn btn-secondary" style="margin-top:0.5rem">
+        Change my vote
+      </button>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+<script>
+  const params  = new URLSearchParams(location.search);
+  const eventId = params.get('id');
+
+  const loadingEl  = document.getElementById('loading');
+  const voteContent = document.getElementById('vote-content');
+  const voteForm   = document.getElementById('vote-form');
+  const thanksPanel = document.getElementById('thanks-panel');
+  const submitBtn  = document.getElementById('submit-btn');
+  const optionsList = document.getElementById('options-list');
+
+  let currentEvent = null;
+
+  async function loadEvent() {
+    if (!eventId) {
+      loadingEl.classList.add('hidden');
+      showError('No event ID found in the URL. Make sure you used the full link.');
+      return;
+    }
+
+    try {
+      currentEvent = await apiFetch(`/api/events/${eventId}`);
+      renderEvent();
+    } catch (err) {
+      loadingEl.classList.add('hidden');
+      showError(err.message === 'Event not found.'
+        ? 'This event does not exist. Double-check the link you were sent.'
+        : err.message);
+    }
+  }
+
+  function renderEvent() {
+    loadingEl.classList.add('hidden');
+
+    document.getElementById('event-title').textContent = currentEvent.title;
+    document.title = `Vote: ${currentEvent.title} — Event Tool`;
+    document.getElementById('results-link').href = `/results.html?id=${eventId}`;
+
+    // Render checkboxes
+    optionsList.innerHTML = '';
+    currentEvent.options.forEach(opt => {
+      const label = document.createElement('label');
+      label.className = 'checkbox-option';
+
+      const checkbox = document.createElement('input');
+      checkbox.type  = 'checkbox';
+      checkbox.value = opt.id;
+      checkbox.name  = 'options';
+
+      const span = document.createElement('span');
+      span.textContent = opt.label;
+
+      label.appendChild(checkbox);
+      label.appendChild(span);
+      optionsList.appendChild(label);
+    });
+
+    voteContent.classList.remove('hidden');
+  }
+
+  voteForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    hideError();
+
+    const name = document.getElementById('voter-name').value.trim();
+    if (!name) {
+      showError('Please enter your name before submitting.');
+      return;
+    }
+
+    const checked = Array.from(optionsList.querySelectorAll('input[type="checkbox"]:checked'))
+      .map(cb => cb.value);
+
+    if (checked.length === 0) {
+      showError('Please select at least one date option.');
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting…';
+
+    try {
+      await apiFetch(`/api/events/${eventId}/votes`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, selections: checked }),
+      });
+
+      voteForm.classList.add('hidden');
+      thanksPanel.classList.remove('hidden');
+    } catch (err) {
+      showError(err.message);
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit my vote →';
+    }
+  });
+
+  document.getElementById('vote-again-btn').addEventListener('click', () => {
+    thanksPanel.classList.add('hidden');
+    voteForm.classList.remove('hidden');
+    hideError();
+  });
+
+  loadEvent();
+</script>
+</body>
+</html>

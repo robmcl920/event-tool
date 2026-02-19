@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Results — Event Tool</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="container">
+
+  <!-- Loading state -->
+  <div id="loading" class="loading">Loading results…</div>
+
+  <!-- Error state -->
+  <div id="error-msg" class="error-msg hidden"></div>
+
+  <!-- Results content (hidden until loaded) -->
+  <div id="results-content" class="hidden">
+
+    <!-- Hero header (title + meta injected by JS) -->
+    <div class="site-header">
+      <span class="logo" role="img" aria-label="Chart">📊</span>
+      <h1 id="event-title"></h1>
+      <p class="subtitle" id="results-meta"></p>
+    </div>
+
+    <!-- Refresh button -->
+    <div class="refresh-row">
+      <button class="btn-refresh" id="refresh-btn">↻ Refresh</button>
+    </div>
+
+    <!-- Results list -->
+    <div id="options-results"></div>
+
+    <p style="margin-top:1rem;font-size:0.9rem">
+      <a id="vote-link" href="#">Vote on this event →</a>
+    </p>
+
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+<script>
+  const params  = new URLSearchParams(location.search);
+  const eventId = params.get('id');
+
+  const loadingEl     = document.getElementById('loading');
+  const resultsContent = document.getElementById('results-content');
+
+  let refreshTimer = null;
+
+  async function loadResults() {
+    if (!eventId) {
+      loadingEl.classList.add('hidden');
+      showError('No event ID found in the URL. Make sure you used the full link.');
+      return;
+    }
+
+    try {
+      const event = await apiFetch(`/api/events/${eventId}`);
+      renderResults(event);
+    } catch (err) {
+      loadingEl.classList.add('hidden');
+      showError(err.message === 'Event not found.'
+        ? 'This event does not exist. Double-check the link you were sent.'
+        : err.message);
+    }
+  }
+
+  function renderResults(event) {
+    loadingEl.classList.add('hidden');
+    hideError();
+
+    document.getElementById('event-title').textContent = event.title;
+    document.title = `Results: ${event.title} — Event Tool`;
+    document.getElementById('vote-link').href = `/vote.html?id=${eventId}`;
+
+    const totalVoters = event.votes.length;
+    const meta = document.getElementById('results-meta');
+    if (totalVoters === 0) {
+      meta.textContent = 'No votes yet — share the link to get started!';
+    } else {
+      meta.textContent = `${totalVoters} ${totalVoters === 1 ? 'person has' : 'people have'} voted so far.`;
+    }
+
+    // Count votes per option
+    const voteCounts = {};
+    event.options.forEach(opt => { voteCounts[opt.id] = []; });
+    event.votes.forEach(vote => {
+      vote.selections.forEach(selId => {
+        if (voteCounts[selId] !== undefined) {
+          voteCounts[selId].push(vote.name);
+        }
+      });
+    });
+
+    // Find the winning count
+    const counts  = event.options.map(opt => voteCounts[opt.id].length);
+    const maxCount = Math.max(...counts, 0);
+
+    // Render each option
+    const container = document.getElementById('options-results');
+    container.innerHTML = '';
+
+    event.options.forEach(opt => {
+      const names  = voteCounts[opt.id];
+      const count  = names.length;
+      const isWinner = count > 0 && count === maxCount;
+
+      const div = document.createElement('div');
+      div.className = 'option-result' + (isWinner ? ' winner' : '');
+
+      if (isWinner) {
+        const badge = document.createElement('div');
+        badge.className = 'winner-badge';
+        badge.textContent = (counts.filter(c => c === maxCount).length === 1)
+          ? '⭐ Most popular'
+          : '⭐ Tied for most popular';
+        div.appendChild(badge);
+      }
+
+      const labelRow = document.createElement('div');
+      labelRow.className = 'option-label';
+
+      const labelText = document.createElement('span');
+      labelText.textContent = opt.label;
+
+      const countBadge = document.createElement('span');
+      countBadge.className = 'vote-count';
+      countBadge.textContent = count === 1 ? '1 vote' : `${count} votes`;
+
+      labelRow.appendChild(labelText);
+      labelRow.appendChild(countBadge);
+      div.appendChild(labelRow);
+
+      const voterDiv = document.createElement('div');
+      voterDiv.className = 'voter-names' + (names.length > 0 ? ' has-votes' : '');
+      voterDiv.textContent = names.length > 0 ? names.join(', ') : 'No votes yet';
+
+      div.appendChild(voterDiv);
+      container.appendChild(div);
+    });
+
+    resultsContent.classList.remove('hidden');
+
+    // Auto-refresh every 30 seconds
+    clearTimeout(refreshTimer);
+    refreshTimer = setTimeout(loadResults, 30000);
+  }
+
+  document.getElementById('refresh-btn').addEventListener('click', () => {
+    clearTimeout(refreshTimer);
+    loadingEl.classList.remove('hidden');
+    resultsContent.classList.add('hidden');
+    loadResults();
+  });
+
+  loadResults();
+</script>
+</body>
+</html>

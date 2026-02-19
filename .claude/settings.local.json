@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node:*)",
+      "Bash(npm --version:*)",
+      "Bash(npm init:*)",
+      "Bash(npm install:*)",
+      "Bash(curl:*)",
+      "Bash(pkill:*)",
+      "Bash(netstat:*)",
+      "Bash(del \"C:\\\\Users\\\\RobertMcLaughlin\\\\Desktop\\\\Event tool\\\\events.json\")",
+      "Bash(__NEW_LINE_1db00262c4bdd43d__ echo \"\")",
+      "Bash(git --version:*)"
+    ]
+  }
+}

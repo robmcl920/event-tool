@@ -1,0 +1,142 @@
+Ticker,Company Name,Sub-Sector,Market Cap ($B),5Y Avg ROIC (%),Gross Margin (%),EBITDA Margin (%),FCF Conversion (%),Net Debt/EBITDA,5Y Rev CAGR (%),Margin Trend,Capital Allocation,Pass/Cut,Cut Reason
+VRT,Vertiv Holdings,Electrical Equipment,97.9,14,36,18,85,2.8,18,Expanding,Good,PASS,
+WM,Waste Management,Waste Management,93.3,14,39,28,90,2.5,7,Stable,Excellent,PASS,
+TT,Trane Technologies,Building Products & HVAC,90.8,18,35,21,95,1.5,8,Expanding,Excellent,PASS,
+HWM,Howmet Aerospace,Aerospace & Defense,90.3,16,34,27,85,2.0,10,Expanding,Excellent,PASS,
+PWR,Quanta Services,Engineering & Construction,83.1,12,14,9,70,1.8,18,Expanding,Good,PASS,
+CTAS,Cintas Corporation,Facility Services,79.7,25,48,33,100,0.8,9,Expanding,Excellent,PASS,
+JCI,Johnson Controls,Building Products & HVAC,79.4,10,33,16,80,2.2,3,Stable,Good,PASS,
+SHW,Sherwin-Williams,Industrial Coatings,75.2,22,48,20,95,2.5,5,Expanding,Excellent,PASS,
+ITW,Illinois Tool Works,Specialty Industrial Machinery,74.3,28,44,27,100,1.5,3,Stable,Excellent,PASS,
+CMI,Cummins Inc.,Power Management,73.7,14,34,16,80,1.8,8,Stable,Good,PASS,
+ECL,Ecolab Inc.,Specialty Chemicals,72.3,12,42,19,85,2.2,5,Expanding,Good,PASS,
+EMR,Emerson Electric,Industrial Automation,72.0,13,50,25,90,1.5,6,Expanding,Good,PASS,
+TDG,TransDigm Group,Aerospace & Defense,69.2,22,59,47,85,6.5,12,Expanding,Excellent,PASS,Flagged: high leverage is intentional capital structure but Net Debt/EBITDA elevated
+RSG,Republic Services,Waste Management,67.5,11,42,29,85,2.8,10,Expanding,Excellent,PASS,
+APD,Air Products,Industrial Gases,62.6,10,32,38,70,3.2,4,Stable,Good,PASS,Flagged: large capex program for green hydrogen depresses near-term ROIC and FCF conversion
+AXON,Axon Enterprise,Fire/Life Safety & Security,53.2,15,60,22,80,0.0,30,Expanding,Good,PASS,
+FAST,Fastenal Company,Industrial Distribution,50.2,30,46,22,100,0.0,8,Stable,Excellent,PASS,
+GWW,W.W. Grainger,Industrial Distribution,49.4,28,39,16,95,0.5,8,Expanding,Excellent,PASS,
+CARR,Carrier Global,Building Products & HVAC,48.5,11,30,17,80,2.8,5,Expanding,Good,PASS,
+AME,AMETEK Inc.,Industrial Automation,47.9,18,36,28,110,1.2,7,Expanding,Excellent,PASS,
+FIX,Comfort Systems USA,Engineering & Construction,47.7,18,20,11,90,0.5,22,Expanding,Good,PASS,
+KEYS,Keysight Technologies,Test & Measurement,47.6,16,64,27,100,0.8,6,Stable,Good,PASS,
+COHR,Coherent Corp.,Test & Measurement,47.6,6,34,18,60,3.5,15,Expanding,Fair,CUT,Below-threshold ROIC and weak FCF conversion post-II-VI merger integration
+HEI,HEICO Corporation,Aerospace & Defense,46.3,14,39,26,90,1.5,15,Expanding,Excellent,PASS,
+URI,United Rentals,Rental Equipment,44.8,13,40,47,55,2.2,16,Expanding,Excellent,PASS,
+GRMN,Garmin Ltd.,Test & Measurement,44.7,22,58,26,100,0.0,10,Expanding,Excellent,PASS,
+FERG,Ferguson Enterprises,Industrial Distribution,42.5,18,31,10,90,1.0,8,Stable,Excellent,PASS,
+WCN,Waste Connections,Waste Management,41.6,9,41,31,80,2.5,12,Expanding,Excellent,PASS,
+ROK,Rockwell Automation,Industrial Automation,39.9,22,60,24,95,1.5,5,Stable,Excellent,PASS,
+ODFL,Old Dominion Freight,Transportation & Logistics,38.0,22,41,30,85,0.2,10,Expanding,Excellent,PASS,
+ROP,Roper Technologies,Industrial Software,37.6,10,68,36,120,2.5,5,Expanding,Excellent,PASS,
+EME,EMCOR Group,Engineering & Construction,32.3,20,17,9,90,0.0,18,Expanding,Good,PASS,
+IR,Ingersoll Rand,Industrial Automation,31.9,10,44,26,85,2.0,15,Expanding,Good,PASS,
+ROL,Rollins Inc.,Facility Services,31.4,28,52,22,95,0.8,10,Expanding,Excellent,PASS,
+OTIS,Otis Worldwide,Specialty Industrial Machinery,30.9,35,36,17,100,2.5,5,Stable,Good,PASS,
+XYL,Xylem Inc.,Water Infrastructure,29.3,10,39,19,80,2.0,15,Expanding,Good,PASS,
+TDY,Teledyne Technologies,Test & Measurement,28.5,11,43,24,90,1.2,8,Expanding,Excellent,PASS,
+DOV,Dover Corporation,Industrial Automation,28.2,14,38,22,90,1.5,5,Stable,Good,PASS,
+SUNB,Sunbelt Rentals,Rental Equipment,26.5,10,46,42,50,2.8,15,Expanding,Good,PASS,
+CW,Curtiss-Wright,Aerospace & Defense,26.1,12,36,20,85,1.0,7,Expanding,Excellent,PASS,
+HUBB,Hubbell Incorporated,Electrical Equipment,25.3,18,35,22,90,1.2,12,Expanding,Excellent,PASS,
+MTZ,MasTec Inc.,Engineering & Construction,23.7,8,12,8,55,2.5,15,Stable,Fair,CUT,Below-threshold ROIC and weak FCF conversion; project-based business with lumpy cash flows
+WWD,Woodward Inc.,Aerospace & Defense,22.3,12,33,20,80,1.5,8,Expanding,Good,PASS,
+VLTO,Veralto Corporation,Water/Pollution Treatment,22.0,15,58,24,95,2.0,4,Stable,Good,PASS,
+PPG,PPG Industries,Industrial Coatings,21.7,12,42,16,85,2.2,2,Stable,Good,PASS,
+NVT,nVent Electric,Electrical Equipment,18.8,13,42,24,85,2.0,12,Expanding,Good,PASS,
+ALB,Albemarle Corporation,Specialty Chemicals,18.5,8,28,22,50,3.5,15,Volatile,Fair,CUT,Highly cyclical lithium commodity exposure; below-threshold ROIC through cycle; volatile margins
+BWXT,BWX Technologies,Aerospace & Defense,18.3,18,28,18,80,2.5,8,Stable,Good,PASS,
+PKG,Packaging Corp of America,Specialty Packaging,18.1,16,30,20,85,1.0,4,Stable,Excellent,PASS,
+DD,DuPont de Nemours,Specialty Chemicals,17.4,7,38,24,80,2.0,2,Stable,Fair,CUT,Below-threshold ROIC; frequent portfolio reshuffling obscures organic performance
+IFF,Int'l Flavors & Fragrances,Specialty Chemicals,17.0,5,38,22,60,4.5,5,Contracting,Poor,CUT,Below-threshold ROIC; over-levered post DuPont N&B acquisition; margins contracting
+FTV,Fortive Corporation,Test & Measurement,17.0,11,55,24,100,1.5,5,Expanding,Excellent,PASS,
+APG,APi Group,Engineering & Construction,17.0,8,30,11,75,2.5,20,Expanding,Good,CUT,Below-threshold ROIC as integration of Chubb Fire acquisition still ongoing; levered
+LII,Lennox International,Building Products & HVAC,16.3,40,32,19,95,1.5,7,Stable,Excellent,PASS,
+RTO,Rentokil Initial,Facility Services,16.0,7,32,18,70,3.5,10,Contracting,Fair,CUT,Below-threshold ROIC; struggling with Terminix integration; margins contracting; over-levered
+ITT,ITT Inc.,Industrial Automation,15.7,15,35,20,90,0.5,7,Expanding,Excellent,PASS,
+TRMB,Trimble Inc.,Test & Measurement,15.4,11,57,22,85,2.0,5,Expanding,Good,PASS,
+MKSI,MKS Instruments,Test & Measurement,15.3,8,46,24,60,4.0,10,Volatile,Fair,CUT,Below-threshold ROIC through cycle; over-levered post Atotech acquisition; highly cyclical semiconductor exposure
+WSO,Watsco Inc.,Industrial Distribution,15.2,20,30,11,95,0.2,10,Stable,Excellent,PASS,
+BALL,Ball Corporation,Specialty Packaging,15.2,10,30,18,80,3.0,2,Stable,Good,PASS,
+XPO,XPO Inc.,Transportation & Logistics,14.8,8,32,14,65,3.0,5,Expanding,Good,CUT,Below-threshold ROIC; elevated leverage post-restructuring; still proving organic earnings power
+NDSN,Nordson Corporation,Industrial Automation,14.7,16,55,28,90,2.0,5,Stable,Excellent,PASS,
+TXT,Textron Inc.,Aerospace & Defense,14.7,10,18,12,80,1.5,6,Stable,Good,PASS,
+GFL,GFL Environmental,Waste Management,14.6,5,45,28,55,4.5,20,Expanding,Fair,CUT,Below-threshold ROIC; heavily levered acquisitive growth; weak FCF conversion
+CLH,Clean Harbors,Waste Management,14.6,12,32,18,70,2.0,12,Expanding,Good,PASS,
+RPM,RPM International,Specialty Chemicals,14.5,14,42,16,90,2.0,5,Expanding,Good,PASS,
+PNR,Pentair plc,Water Infrastructure,14.1,14,38,22,90,1.5,3,Expanding,Good,PASS,
+GGG,Graco Inc.,Fluid Handling,13.9,28,54,28,100,0.3,6,Stable,Excellent,PASS,
+IEX,IDEX Corporation,Fluid Handling,13.7,16,45,27,100,1.5,5,Stable,Excellent,PASS,
+CSL,Carlisle Companies,Building Products,13.4,20,38,24,95,1.0,8,Expanding,Excellent,PASS,
+AVY,Avery Dennison,Specialty Packaging,12.4,18,30,15,90,1.8,5,Expanding,Good,PASS,
+STRL,Sterling Infrastructure,Engineering & Construction,12.3,18,18,13,85,0.5,20,Expanding,Good,PASS,
+ALLE,Allegion plc,Fire/Life Safety & Security,12.3,20,44,24,95,1.5,5,Stable,Excellent,PASS,
+CNH,CNH Industrial,Agricultural Equipment,12.3,10,26,14,70,2.5,5,Volatile,Fair,CUT,Highly cyclical ag equipment; ROIC at threshold; volatile margins through ag cycle
+WCC,WESCO International,Industrial Distribution,12.2,9,22,8,65,3.5,10,Stable,Fair,CUT,Below-threshold ROIC; over-levered post Anixter acquisition; thin margins for distribution
+AEIS,Advanced Energy Industries,Electrical Equipment,12.0,12,38,20,80,1.0,8,Expanding,Good,PASS,
+GNRC,Generac Holdings,Power Management,11.7,15,38,20,80,1.5,12,Volatile,Good,PASS,
+RRX,Regal Rexnord,Industrial Automation,11.7,8,34,18,65,3.8,20,Expanding,Fair,CUT,Below-threshold ROIC; over-levered post Rexnord and Altra acquisitions; still integrating
+CCK,Crown Holdings,Specialty Packaging,11.2,12,22,16,80,3.5,3,Stable,Good,CUT,Elevated leverage; thin margins for packaging; ROIC at threshold
+EMN,Eastman Chemical,Specialty Chemicals,10.5,9,24,18,75,2.5,3,Stable,Fair,CUT,Below-threshold ROIC through cycle; commodity chemical exposure in some segments
+SAIA,Saia Inc.,Transportation & Logistics,10.5,14,28,19,70,0.5,16,Expanding,Good,PASS,
+WMS,Advanced Drainage Systems,Building Products,10.3,18,35,26,80,2.0,12,Expanding,Good,PASS,
+DY,Dycom Industries,Engineering & Construction,10.1,14,18,11,70,1.5,14,Expanding,Good,PASS,
+GTLS,Chart Industries,Industrial Automation,9.9,7,32,20,50,4.0,25,Expanding,Fair,CUT,Below-threshold ROIC; over-levered post Howden acquisition; weak FCF conversion
+WTS,Watts Water Technologies,Water Infrastructure,9.8,15,44,20,90,1.0,7,Expanding,Excellent,PASS,
+AIT,Applied Industrial Tech,Industrial Distribution,9.5,16,30,12,90,1.0,10,Expanding,Excellent,PASS,
+BLD,TopBuild Corp.,Building Products,9.4,18,30,18,85,1.5,15,Expanding,Good,PASS,
+SPXC,SPX Technologies,Building Products,9.3,14,42,18,90,1.5,10,Expanding,Good,PASS,
+CNM,Core & Main,Industrial Distribution,9.0,14,27,12,80,2.5,15,Expanding,Good,PASS,
+BLDR,Builders FirstSource,Building Products,9.0,15,33,15,80,1.5,10,Volatile,Good,PASS,
+OSK,Oshkosh Corporation,Farm & Construction Equipment,8.8,12,18,10,70,1.5,8,Stable,Good,PASS,
+CGNX,Cognex Corporation,Test & Measurement,8.2,14,72,22,90,0.0,5,Volatile,Good,PASS,
+AYI,Acuity Brands,Electrical Equipment,8.2,18,44,18,100,0.5,4,Expanding,Good,PASS,
+OC,Owens Corning,Building Products,8.0,14,30,22,85,1.5,8,Expanding,Good,PASS,
+TTEK,Tetra Tech,Engineering & Construction,7.9,14,18,11,85,0.5,10,Expanding,Good,PASS,
+AGCO,AGCO Corporation,Agricultural Equipment,7.9,11,26,10,65,1.5,5,Volatile,Good,CUT,Highly cyclical ag equipment; volatile margins and earnings through ag cycle; ROIC at threshold
+CE,Celanese Corporation,Specialty Chemicals,7.5,10,28,22,70,3.5,5,Contracting,Fair,CUT,ROIC at threshold; over-levered post DuPont M&M acquisition; margins contracting
+PRIM,Primoris Services,Engineering & Construction,7.5,10,12,7,60,2.0,15,Expanding,Good,CUT,ROIC at threshold; thin margins; project-based with lumpy cash flows
+POOL,Pool Corporation,Industrial Distribution,7.4,32,30,13,95,1.0,8,Stable,Excellent,PASS,
+ZWS,Zurn Elkay Water Solutions,Water Infrastructure,7.3,10,44,22,85,2.0,15,Expanding,Good,PASS,
+AXTA,Axalta Coating Systems,Industrial Coatings,7.0,10,34,18,80,3.0,4,Stable,Fair,CUT,ROIC at threshold; elevated leverage; limited organic growth
+AWI,Armstrong World Industries,Building Products,7.0,18,40,32,90,1.5,5,Expanding,Good,PASS,
+ESE,ESCO Technologies,Test & Measurement,6.8,10,38,18,85,0.8,6,Expanding,Good,PASS,
+MSA,MSA Safety,Fire/Life Safety & Security,6.6,15,48,22,90,1.0,5,Expanding,Excellent,PASS,
+AAON,AAON Inc.,Building Products & HVAC,6.5,18,35,22,85,0.5,15,Expanding,Good,PASS,
+FSS,Federal Signal Corp.,Pollution Treatment,6.4,12,30,16,85,1.0,10,Expanding,Good,PASS,
+POWL,Powell Industries,Electrical Equipment,6.3,22,25,16,90,0.0,30,Expanding,Good,PASS,
+HXL,Hexcel Corporation,Aerospace & Defense,6.2,10,28,18,70,1.5,5,Expanding,Good,PASS,
+SEE,Sealed Air Corporation,Specialty Packaging,6.2,12,34,22,75,3.5,2,Stable,Fair,CUT,Elevated leverage; limited organic growth; ROIC at threshold
+ENS,EnerSys,Electrical Equipment,6.1,11,32,14,75,2.0,8,Stable,Good,PASS,
+KTOS,Kratos Defense,Aerospace & Defense,6.0,5,28,8,40,2.0,12,Expanding,Fair,CUT,Below-threshold ROIC; defense startup dynamics with heavy R&D investment; weak FCF conversion
+MOG.A,Moog Inc.,Aerospace & Defense,5.8,11,28,12,70,2.0,6,Stable,Good,PASS,
+SITE,SiteOne Landscape Supply,Industrial Distribution,5.7,10,33,8,80,1.5,12,Expanding,Good,PASS,
+EQPT,EquipmentShare.com,Rental Equipment,5.5,6,35,22,40,4.0,35,Expanding,Fair,CUT,Below-threshold ROIC; heavily levered hypergrowth; weak FCF conversion; unproven at scale
+ADT,ADT Inc.,Fire/Life Safety & Security,5.3,5,52,30,60,4.0,3,Stable,Fair,CUT,Below-threshold ROIC; heavily levered; subscriber acquisition costs depress returns
+VNT,Vontier Corporation,Test & Measurement,5.0,15,44,22,90,2.0,3,Stable,Good,PASS,
+REZI,Resideo Technologies,Industrial Distribution,5.0,8,28,10,65,3.5,5,Stable,Fair,CUT,Below-threshold ROIC; over-levered; thin distribution margins
+SNDR,Schneider National,Transportation & Logistics,5.0,8,14,10,55,0.5,4,Stable,Fair,CUT,Below-threshold ROIC; asset-heavy trucking with thin margins; cyclical
+SON,Sonoco Products,Specialty Packaging,5.0,9,24,14,70,3.0,5,Stable,Fair,CUT,Below-threshold ROIC; over-levered post acquisitions; commodity packaging segments
+CWST,Casella Waste Systems,Waste Management,4.9,6,38,24,50,3.5,12,Expanding,Fair,CUT,Below-threshold ROIC; heavily levered acquisitive growth; weak FCF conversion relative to peers
+LPX,Louisiana-Pacific Corp.,Building Products,4.9,18,28,22,85,0.5,8,Volatile,Good,PASS,
+ST,Sensata Technologies,Test & Measurement,4.8,10,32,20,75,3.0,3,Stable,Fair,CUT,ROIC at threshold; elevated leverage; limited organic growth
+BCO,The Brinks Company,Fire/Life Safety & Security,4.0,8,28,14,55,4.0,5,Stable,Fair,CUT,Below-threshold ROIC; over-levered; CapEx-heavy armored vehicle fleet depresses returns
+BRC,Brady Corporation,Fire/Life Safety & Security,3.8,16,52,20,100,0.0,3,Stable,Good,PASS,
+ASH,Ashland Inc.,Specialty Chemicals,3.8,7,38,22,70,2.0,0,Contracting,Fair,CUT,Below-threshold ROIC; no organic growth; margins contracting from portfolio restructuring
+TREX,Trex Company,Building Products,3.8,28,40,26,90,0.0,10,Expanding,Excellent,PASS,
+MATX,Matson Inc.,Transportation & Logistics,3.8,18,20,18,80,0.5,8,Volatile,Good,PASS,
+SLGN,Silgan Holdings,Specialty Packaging,4.0,12,22,16,80,2.5,4,Stable,Good,PASS,
+HRI,Herc Holdings,Rental Equipment,3.4,10,42,38,45,2.5,12,Expanding,Good,PASS,
+EXPO,Exponent Inc.,Engineering & Construction,3.3,30,38,24,100,0.0,8,Stable,Excellent,PASS,
+KWR,Quaker Houghton,Specialty Chemicals,3.2,8,36,14,65,2.5,5,Stable,Fair,CUT,Below-threshold ROIC; integration of Houghton weighed on returns; thin margins for specialty chem
+WSC,WillScot Holdings,Rental Equipment,3.1,10,44,38,65,3.5,15,Expanding,Good,CUT,Elevated leverage; ROIC at threshold; modular space business less proven than equipment rental
+ABM,ABM Industries,Facility Services,3.0,12,14,6,80,1.5,5,Stable,Good,PASS,
+HAYW,Hayward Holdings,Electrical Equipment,2.9,10,46,26,75,3.0,5,Stable,Fair,CUT,ROIC at threshold; elevated leverage from PE ownership era; limited growth
+MGRC,McGrath RentCorp,Rental Equipment,2.6,12,44,32,80,1.0,8,Expanding,Good,PASS,
+GPK,Graphic Packaging,Specialty Packaging,2.6,10,26,18,70,3.0,5,Stable,Fair,CUT,ROIC at threshold; elevated leverage; commodity-ish paperboard packaging
+HWKN,Hawkins Inc.,Specialty Chemicals,2.5,14,24,14,80,1.0,12,Expanding,Good,PASS,
+HUBG,Hub Group Inc.,Transportation & Logistics,2.5,10,16,8,70,0.5,4,Stable,Fair,CUT,ROIC at threshold; thin margins; intermodal brokerage with limited pricing power
+IOSP,Innospec Inc.,Specialty Chemicals,2.3,14,32,14,85,0.5,3,Stable,Good,PASS,
+DNOW,DNOW Inc.,Industrial Distribution,2.2,8,22,5,60,0.0,5,Volatile,Fair,CUT,Below-threshold ROIC; thin margins; highly cyclical oil & gas distribution
+DXPE,DXP Enterprises,Industrial Distribution,2.0,10,30,10,70,2.5,12,Expanding,Good,PASS,

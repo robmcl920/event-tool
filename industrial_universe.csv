@@ -1,0 +1,163 @@
+Ticker,Company Name,Sub-Sector,Approximate Market Cap ($B)
+VRT,Vertiv Holdings,Electrical Equipment & Components,97.9
+WM,Waste Management,Waste Management & Environmental,93.3
+TT,Trane Technologies,Building Products & HVAC,90.8
+HWM,Howmet Aerospace,Aerospace & Defense Components,90.3
+PWR,Quanta Services,Engineering & Construction,83.1
+CTAS,Cintas Corporation,Facility Services,79.7
+JCI,Johnson Controls International,Building Products & HVAC,79.4
+SHW,The Sherwin-Williams Company,Industrial Coatings,75.2
+ITW,Illinois Tool Works,Specialty Industrial Machinery,74.3
+CMI,Cummins Inc.,Power Management & Grid,73.7
+ECL,Ecolab Inc.,Specialty Chemicals & Materials,72.3
+EMR,Emerson Electric,Industrial Automation & Motion,72.0
+TDG,TransDigm Group,Aerospace & Defense Components,69.2
+RSG,Republic Services,Waste Management & Environmental,67.5
+APD,Air Products & Chemicals,Industrial Gases,62.6
+AXON,Axon Enterprise,Fire/Life Safety & Security,53.2
+FAST,Fastenal Company,Industrial Distribution,50.2
+GWW,W.W. Grainger,Industrial Distribution,49.4
+CARR,Carrier Global,Building Products & HVAC,48.5
+AME,AMETEK Inc.,Industrial Automation & Motion,47.9
+FIX,Comfort Systems USA,Engineering & Construction,47.7
+KEYS,Keysight Technologies,Test Measurement & Inspection,47.6
+COHR,Coherent Corp.,Test Measurement & Inspection,47.6
+HEI,HEICO Corporation,Aerospace & Defense Components,46.3
+URI,United Rentals,Rental Equipment,44.8
+GRMN,Garmin Ltd.,Test Measurement & Inspection,44.7
+FERG,Ferguson Enterprises,Industrial Distribution,42.5
+WCN,Waste Connections,Waste Management & Environmental,41.6
+ROK,Rockwell Automation,Industrial Automation & Motion,39.9
+ODFL,Old Dominion Freight Line,Transportation & Logistics,38.0
+ROP,Roper Technologies,Industrial Software / Serial Acquirer,37.6
+EME,EMCOR Group,Engineering & Construction,32.3
+IR,Ingersoll Rand,Industrial Automation & Motion,31.9
+ROL,Rollins Inc.,Facility Services,31.4
+OTIS,Otis Worldwide,Specialty Industrial Machinery,30.9
+XYL,Xylem Inc.,Water Infrastructure & Treatment,29.3
+TDY,Teledyne Technologies,Test Measurement & Inspection,28.5
+DOV,Dover Corporation,Industrial Automation & Motion,28.2
+SUNB,Sunbelt Rentals,Rental Equipment,26.5
+CW,Curtiss-Wright,Aerospace & Defense Components,26.1
+HUBB,Hubbell Incorporated,Electrical Equipment & Components,25.3
+MTZ,MasTec Inc.,Engineering & Construction,23.7
+LYB,LyondellBasell Industries,Specialty Chemicals & Materials,23.6
+WWD,Woodward Inc.,Aerospace & Defense Components,22.3
+VLTO,Veralto Corporation,Pollution & Treatment Controls,22.0
+PPG,PPG Industries,Industrial Coatings,21.7
+NVT,nVent Electric,Electrical Equipment & Components,18.8
+ALB,Albemarle Corporation,Specialty Chemicals & Materials,18.5
+BWXT,BWX Technologies,Aerospace & Defense Components,18.3
+PKG,Packaging Corp of America,Specialty Packaging,18.1
+DD,DuPont de Nemours,Specialty Chemicals & Materials,17.4
+IFF,International Flavors & Fragrances,Specialty Chemicals & Materials,17.0
+FTV,Fortive Corporation,Test Measurement & Inspection,17.0
+APG,APi Group Corporation,Engineering & Construction,17.0
+LII,Lennox International,Building Products & HVAC,16.3
+RTO,Rentokil Initial,Facility Services,16.0
+ITT,ITT Inc.,Industrial Automation & Motion,15.7
+TRMB,Trimble Inc.,Test Measurement & Inspection,15.4
+MKSI,MKS Instruments,Test Measurement & Inspection,15.3
+WSO,Watsco Inc.,Industrial Distribution,15.2
+J,Jacobs Solutions,Engineering & Construction,15.2
+BALL,Ball Corporation,Specialty Packaging,15.2
+XPO,XPO Inc.,Transportation & Logistics,14.8
+NDSN,Nordson Corporation,Industrial Automation & Motion,14.7
+TXT,Textron Inc.,Aerospace & Defense Components,14.7
+GFL,GFL Environmental,Waste Management & Environmental,14.6
+CLH,Clean Harbors,Waste Management & Environmental,14.6
+RPM,RPM International,Specialty Chemicals & Materials,14.5
+PNR,Pentair plc,Water Infrastructure & Treatment,14.1
+GGG,Graco Inc.,Fluid Handling,13.9
+IEX,IDEX Corporation,Fluid Handling,13.7
+CSL,Carlisle Companies,Building Products & HVAC,13.4
+AVY,Avery Dennison,Specialty Packaging,12.4
+STRL,Sterling Infrastructure,Engineering & Construction,12.3
+ALLE,Allegion plc,Fire/Life Safety & Security,12.3
+CNH,CNH Industrial,Agricultural Technology & Equipment,12.3
+WCC,WESCO International,Industrial Distribution,12.2
+MAS,Masco Corporation,Building Products & HVAC,12.0
+AEIS,Advanced Energy Industries,Electrical Equipment & Components,12.0
+CHRW,C.H. Robinson Worldwide,Transportation & Logistics,12.0
+GNRC,Generac Holdings,Power Management & Grid,11.7
+RRX,Regal Rexnord,Industrial Automation & Motion,11.7
+ACM,AECOM,Engineering & Construction,11.5
+CCK,Crown Holdings,Specialty Packaging,11.2
+EMN,Eastman Chemical,Specialty Chemicals & Materials,10.5
+SAIA,Saia Inc.,Transportation & Logistics,10.5
+WMS,Advanced Drainage Systems,Building Products & HVAC,10.3
+DY,Dycom Industries,Engineering & Construction,10.1
+GTLS,Chart Industries,Industrial Automation & Motion,9.9
+WTS,Watts Water Technologies,Water Infrastructure & Treatment,9.8
+AIT,Applied Industrial Technologies,Industrial Distribution,9.5
+BLD,TopBuild Corp.,Building Products & HVAC,9.4
+SPXC,SPX Technologies,Building Products & HVAC,9.3
+CNM,Core & Main,Industrial Distribution,9.0
+BLDR,Builders FirstSource,Building Products & HVAC,9.0
+OSK,Oshkosh Corporation,Farm & Construction Equipment,8.8
+CGNX,Cognex Corporation,Test Measurement & Inspection,8.2
+AYI,Acuity Brands,Electrical Equipment & Components,8.2
+OC,Owens Corning,Building Products & HVAC,8.0
+TTEK,Tetra Tech,Engineering & Construction,7.9
+AGCO,AGCO Corporation,Agricultural Technology & Equipment,7.9
+CE,Celanese Corporation,Specialty Chemicals & Materials,7.5
+PRIM,Primoris Services,Engineering & Construction,7.5
+POOL,Pool Corporation,Industrial Distribution,7.4
+ZWS,Zurn Elkay Water Solutions,Water Infrastructure & Treatment,7.3
+AXTA,Axalta Coating Systems,Industrial Coatings,7.0
+AWI,Armstrong World Industries,Building Products & HVAC,7.0
+ESE,ESCO Technologies,Test Measurement & Inspection,6.8
+FLR,Fluor Corporation,Engineering & Construction,6.6
+MSA,MSA Safety,Fire/Life Safety & Security,6.6
+AAON,AAON Inc.,Building Products & HVAC,6.5
+TEX,Terex Corporation,Farm & Construction Equipment,6.5
+FSS,Federal Signal Corporation,Pollution & Treatment Controls,6.4
+POWL,Powell Industries,Electrical Equipment & Components,6.3
+HXL,Hexcel Corporation,Aerospace & Defense Components,6.2
+SEE,Sealed Air Corporation,Specialty Packaging,6.2
+ENS,EnerSys,Electrical Equipment & Components,6.1
+KTOS,Kratos Defense,Aerospace & Defense Components,6.0
+MOG.A,Moog Inc.,Aerospace & Defense Components,5.8
+SITE,SiteOne Landscape Supply,Industrial Distribution,5.7
+EQPT,EquipmentShare.com,Rental Equipment,5.5
+ADT,ADT Inc.,Fire/Life Safety & Security,5.3
+VNT,Vontier Corporation,Test Measurement & Inspection,5.0
+REZI,Resideo Technologies,Industrial Distribution,5.0
+SNDR,Schneider National,Transportation & Logistics,5.0
+SON,Sonoco Products,Specialty Packaging,5.0
+CWST,Casella Waste Systems,Waste Management & Environmental,4.9
+LPX,Louisiana-Pacific Corporation,Building Products & HVAC,4.9
+ST,Sensata Technologies,Test Measurement & Inspection,4.8
+MSM,MSC Industrial Direct,Industrial Distribution,4.8
+FLO,Flowers Foods,Facility Services,4.8
+KBR,KBR Inc.,Engineering & Construction,4.7
+FBIN,Fortune Brands Innovations,Building Products & HVAC,4.6
+MWA,Mueller Water Products,Water Infrastructure & Treatment,4.6
+CBT,Cabot Corporation,Specialty Chemicals & Materials,4.5
+SPR,Spirit AeroSystems,Aerospace & Defense Components,4.5
+UNF,UniFirst Corporation,Facility Services,4.5
+BMI,Badger Meter,Test Measurement & Inspection,4.3
+ITRI,Itron Inc.,Test Measurement & Inspection,4.1
+NOVT,Novanta Inc.,Test Measurement & Inspection,4.1
+BCO,The Brinks Company,Fire/Life Safety & Security,4.0
+SLGN,Silgan Holdings,Specialty Packaging,4.0
+ASH,Ashland Inc.,Specialty Chemicals & Materials,3.8
+TREX,Trex Company,Building Products & HVAC,3.8
+MATX,Matson Inc.,Transportation & Logistics,3.8
+BRC,Brady Corporation,Fire/Life Safety & Security,3.8
+HUN,Huntsman Corporation,Specialty Chemicals & Materials,3.5
+WDFC,WD-40 Company,Specialty Chemicals & Materials,3.5
+HRI,Herc Holdings,Rental Equipment,3.4
+EXPO,Exponent Inc.,Engineering & Construction,3.3
+KWR,Quaker Houghton,Specialty Chemicals & Materials,3.2
+GFF,Griffon Corporation,Building Products & HVAC,3.2
+WSC,WillScot Holdings,Rental Equipment,3.1
+ABM,ABM Industries,Facility Services,3.0
+HAYW,Hayward Holdings,Electrical Equipment & Components,2.9
+MGRC,McGrath RentCorp,Rental Equipment,2.6
+GPK,Graphic Packaging Holding,Specialty Packaging,2.6
+HWKN,Hawkins Inc.,Specialty Chemicals & Materials,2.5
+HUBG,Hub Group Inc.,Transportation & Logistics,2.5
+IOSP,Innospec Inc.,Specialty Chemicals & Materials,2.3
+DNOW,DNOW Inc.,Industrial Distribution,2.2
+DXPE,DXP Enterprises,Industrial Distribution,2.0
